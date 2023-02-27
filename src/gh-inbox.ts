@@ -10,7 +10,7 @@ export class GitHubInbox {
     this.fetchInterval = 60;
   }
 
-  async initialize() {
+  async initialize(): Promise<void> {
     await this.fetchNotifications();
   }
 
@@ -66,28 +66,22 @@ export class GitHubInbox {
 
   }
 
-  async markAsRead (notificationId: string) {
+  async markAsRead (id: string): Promise<void> {
     try {
-      const response = await ofetch(`https://api.github.com/notifications/threads/${notificationId}`, {
+      await ofetch(`https://api.github.com/notifications/threads/${id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           accept: "application/vnd.github+json",
-        },
-        body: {
-          read: true,
-        },
+        }
       });
-  
-      return response;
     } catch (error) {
       console.error(error);
       throw error;
     }
-
   }
 
-  getFetchInterval() {
+  getFetchInterval(): number {
     return this.fetchInterval;
   }
 
