@@ -1,11 +1,24 @@
 {
   "name": "gh-notifications",
   "version": "1.1.1",
-  "description": "",
+  "description": "📬 Lightweight (<3KB) Wrapper around the GitHub Notifications API",
   "repository": "intevel/gh-notifications",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
+  "keywords": [
+    "github",
+    "notifications",
+    "api",
+    "wrapper",
+    "github-api",
+    "github-notifications",
+    "github-notifications-api",
+    "github-notifications-wrapper",
+    "gh-notifications",
+    "gh-notifications-api",
+    "gh-notifications-wrapper"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,7 +38,7 @@
     "lint": "eslint --cache --ext .ts,.js,.mjs,.cjs . && prettier -c src test",
     "lint:fix": "eslint --cache --ext .ts,.js,.mjs,.cjs . --fix && prettier -c src test -w",
     "prepack": "pnpm run build",
-    "release": "changelogen --release && yarn publish && git add . && git push --follow-tags",
+    "release": "changelogen --OUTPUT=CHANGELOG.md && yarn publish && git add . && git push --follow-tags",
     "test": "vitest run --coverage"
   },
   "devDependencies": {
