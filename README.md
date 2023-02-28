@@ -18,7 +18,30 @@ yarn add gh-notifications
 ```
 
 ## Usage
-Soon
+
+> Warning:
+> Usage of _gh-notifications_ requires a valid github api token: [Documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-api)
+
+```js
+const APITOKEN = "**************";
+
+async function main() {
+  // get a GitHubInbox instance and pass the api token to it
+  const inbox = new GitHubInbox(APITOKEN);
+  // initialize the inbox
+  await inbox.initialize();
+
+  // fetch all unread notifications
+  const unreadNotifications = await inbox.fetchUnreadNotifications();
+  // view src/types.ts for all fields in the notification object
+  console.log(unreadNotifications);
+
+  // mark the latest unread notification as read
+  await inbox.markAsRead(unreadNotifications[0]?.id);
+}
+
+main();
+```
 
 ## License
 
